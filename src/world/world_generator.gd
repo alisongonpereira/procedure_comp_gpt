@@ -73,11 +73,11 @@ func _generate_tiles(corrupted: bool) -> Array:
             var n = noise.get_noise_2d(float(x), float(y))
             var tile_type := "grass"
             if n > 0.35:
-                tile_type = corrupted ? "void" : "forest"
+                tile_type = "void" if corrupted else "forest"
             elif n < -0.25:
-                tile_type = corrupted ? "glow" : "water"
+                tile_type = "glow" if corrupted else "water"
             elif abs(n) < 0.1:
-                tile_type = corrupted ? "ashen" : "road"
+                tile_type = "ashen" if corrupted else "road"
             row.append(tile_type)
         tiles.append(row)
     return tiles
@@ -116,7 +116,7 @@ func _generate_minibosses(seed: int, corrupted: bool) -> Array:
     var results: Array = []
     for archetype in MINI_BOSSES:
         var pos := Vector2i(rng.randi_range(3, MAP_WIDTH - 4), rng.randi_range(3, MAP_HEIGHT - 4))
-        var stats_scale := corrupted ? 1.35 : 1.0
+        var stats_scale := 1.35 if corrupted else 1.0
         var base_power := 10 + rng.randi_range(0, 6)
         results.append({
             "id": archetype["id"],
@@ -139,14 +139,14 @@ func _generate_boss(seed: int, motivation: String, corrupted: bool) -> Dictionar
         "obsessao": "Só dominando cada eco eu descansarei.",
         "luto": "Se eles se foram, o mundo irá também."
     }
-    var corrupted_twist := corrupted ? " A corrupção reescreve minhas lembranças." : ""
+    var corrupted_twist := " A corrupção reescreve minhas lembranças." if corrupted else ""
     return {
         "name": final_name,
         "title": "Guardião das Mudanças",
         "motivation": motivation,
         "position": Vector2i(rng.randi_range(5, MAP_WIDTH - 6), rng.randi_range(5, MAP_HEIGHT - 6)),
         "speech": statements.get(motivation, "Eu mudo porque devo.") + corrupted_twist,
-        "power": int(25 * (corrupted ? 1.5 : 1.0))
+        "power": int(25 * (1.5 if corrupted else 1.0))
     }
 
 func _scatter_items(seed: int, corrupted: bool) -> Array:
@@ -162,7 +162,7 @@ func _scatter_items(seed: int, corrupted: bool) -> Array:
         scattered.append({
             "id": item["id"],
             "name": item["name"],
-            "rarity": rare_seed ? "lendario" : item["rarity"],
+            "rarity": "lendario" if rare_seed else item["rarity"],
             "position": Vector2i(rng.randi_range(1, MAP_WIDTH - 2), rng.randi_range(1, MAP_HEIGHT - 2))
         })
     return scattered

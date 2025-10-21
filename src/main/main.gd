@@ -101,7 +101,10 @@ func _build_world() -> void:
     npc_nodes.clear()
     enemy_nodes.clear()
     items_map.clear()
-    blocked_tiles = world_data.get("corrupted", false) ? ["road", "grass"] : ["water", "forest", "void"]
+    if world_data.get("corrupted", false):
+        blocked_tiles = ["road", "grass"]
+    else:
+        blocked_tiles = ["water", "forest", "void"]
 
     var map_data: Array = world_data.get("map", [])
     for y in range(map_data.size()):
