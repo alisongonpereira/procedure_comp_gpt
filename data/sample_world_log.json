@@ -1,0 +1,75 @@
+{
+  "seed": 123456,
+  "motivation": "obsessao",
+  "weather": "eclipse",
+  "corrupted": false,
+  "boss": {
+    "name": "Vesper",
+    "title": "Guardião das Mudanças",
+    "motivation": "obsessao",
+    "speech": "Só dominando cada eco eu descansarei.",
+    "power": 25
+  },
+  "minibosses": [
+    {
+      "id": "hunter",
+      "title": "O Caçador",
+      "position": [12, 30],
+      "power": 13,
+      "motivation": "luto"
+    },
+    {
+      "id": "mist_daughter",
+      "title": "A Filha da Névoa",
+      "position": [28, 16],
+      "power": 16,
+      "motivation": "praga"
+    },
+    {
+      "id": "watcher",
+      "title": "O Vigilante",
+      "position": [8, 22],
+      "power": 14,
+      "motivation": "amor"
+    }
+  ],
+  "events": [
+    { "tag": "chuva de memórias", "impact": "obsessao", "memory_echo": false },
+    { "tag": "clarões de origem", "impact": "obsessao", "memory_echo": true },
+    { "tag": "névoa estática", "impact": "obsessao", "memory_echo": false }
+  ],
+  "shop": [
+    { "id": "mirror_ink", "name": "Tinta Espelhada", "rarity": "comum", "price": 18 },
+    { "id": "timeglass", "name": "Ampulheta Partida", "rarity": "comum", "price": 21 },
+    { "id": "memory_blossom", "name": "Flor da Memória", "rarity": "raro", "price": 29 },
+    { "id": "ember", "name": "Brasa Persistente", "rarity": "raro", "price": 16 }
+  ],
+  "npcs": [
+    {
+      "name": "Arin",
+      "role": "arqueiro eterno",
+      "position": [10, 14],
+      "dialogue": "Eu senti obsessao ecoar antes...",
+      "remembers_player": true
+    },
+    {
+      "name": "Mira",
+      "role": "arqueóloga do tempo",
+      "position": [20, 6],
+      "dialogue": "Se o mundo é obsessao, então precisamos lutar de outra forma.",
+      "remembers_player": false
+    },
+    {
+      "name": "Lys",
+      "role": "cartógrafa das memórias",
+      "position": [32, 24],
+      "dialogue": "As memórias estão diferentes nesta semente 123456.",
+      "remembers_player": true
+    }
+  ],
+  "items": [
+    { "name": "Flor da Memória", "rarity": "raro", "position": [7, 8] },
+    { "name": "Fragmento de Eco", "rarity": "epico", "position": [18, 12] },
+    { "name": "Brasa Persistente", "rarity": "raro", "position": [25, 27] }
+  ]
+}
